@@ -115,6 +115,17 @@ Concrêtement, utiliser Tor peut permettre :
 $\Rightarrow$ Tor dispose également d'un système de « services cachés » qui permet de fournir un service en cachant l'emplacement du serveur.
 }
 \end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Qu'est-ce que TOR?}
+\justifying{
+Tor peut donc être vu comme un proxy socks5 un peu particulier, par lequel on peut faire passer tout type de connexion (dès lors qu'elle est \emph{de type TCP}).
+\\
+Rq : comme il s'agit d'un proxy, on peut lui associer un autre logiciel qu'un navigateur dès lors que ce dernier accepte de se connecter via un proxy (client de messagerie par exemple).
+}
+\end{frame}
+
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \begin{center}
@@ -207,7 +218,6 @@ Une fois le paquet arrivé au noeud de sortie
 }
 \begin{itemize}
 \justifying{
-\item La résolution DNS est faite par le noeud de sortie.
 \item La requête est envoyé au serveur web par le noeud de sortie (qui expose donc son adresse IP).
 \item Le noeud de sortie reçoit la réponse.
 }
@@ -502,7 +512,6 @@ Vous devrez changer quelques-unes de vos habitudes, et certaines choses ne march
 \\~\\ \includegraphics[scale=0.4]{./images/logo_tor.jpg}
 \end{center}
 \end{frame}
-%---------------------
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
@@ -519,7 +528,6 @@ Vous devrez changer quelques-unes de vos habitudes, et certaines choses ne march
 \end{itemize}
 \end{frame}
 
-
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \begin{center}
@@ -529,7 +537,7 @@ Vous devrez changer quelques-unes de vos habitudes, et certaines choses ne march
 \end{frame}
 %---------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Soutenir le projet Tor 1/4}
+\frametitle{Soutenir le projet Tor 1/3}
 
 \begin{block}{NosOignons}
 \justifying{
@@ -549,7 +557,7 @@ Il existe l'association NosOignons.net, qui propose des nœuds de sortie Tor fin
  \end{frame}
 %---------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Soutenir le projet Tor 2/4}
+\frametitle{Soutenir le projet Tor 2/3}
 \begin{block}{Tor Project}
 \begin{itemize}
 \justifying{
@@ -561,23 +569,38 @@ Il existe l'association NosOignons.net, qui propose des nœuds de sortie Tor fin
 \end{block}
  \end{frame}
 
-%---------------------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Soutenir le projet Tor 3/4}
-\begin{center}
-\includegraphics[scale=0.25]{./images/jeu_tor.jpg}
-\end{center}
-\end{frame}
-
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Soutenir le projet Tor 4/4}
+\frametitle{Soutenir le projet Tor 3/3}
 \justifying{
 Si vous utilisez Cloudflare pour protéger votre site, un script permet aux utilisateurs de Tor d'y accéder
 \\ \url{https://github.com/DonnchaC/cloudflare-tor-whitelister}
 \\en ajoutant les relais/noeud de sortie sur une white-liste, permettant aux utilisateur de Tor ne pas avoir à saisir de Captcha.
 }
 \end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Annexes}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+
+\begin{frame}
+\frametitle{La commande Torify}
+\justifying{
+Torify est une commande qui, placée devant le nom d’une commande/d’un programme qui utilise le réseau, permet que ce dernier/cette dernière fasse passer son trafic par TOR. Ainsi, n’importe quelle application pourra passer par TOR au lieu de se connecter directement à Internet, et ce, à la demande de l’utilisateur.
+}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{TorBirdy}
+\justifying{
+TorBirdy est une extension pour le courielleur Thunderbird qui permet de faire la réception et l'envoi de mail en passant par Tor (on n'expose alors pas sa propre IP aux serveurs IMAP/SMTP).
+}
+\end{frame}
+%----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
