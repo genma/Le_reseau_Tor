@@ -1,0 +1,589 @@
+\documentclass{beamer}
+\mode<presentation> {
+
+\usepackage{color}
+\definecolor{bottomcolour}{rgb}{0.21,0.11,0.21}
+\definecolor{middlecolour}{rgb}{0.21,0.11,0.21}
+\setbeamercolor{structure}{fg=white}
+\setbeamertemplate{frametitle}[default]%[center]
+\setbeamercolor{normal text}{bg=black, fg=white}
+\setbeamertemplate{background canvas}[vertical shading]
+[bottom=bottomcolour, middle=middlecolour, top=black]
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{navigation symbols}{} %no nav symbols
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!50!red!50!blue!100!green}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!5!white!10!bg,fg=white}
+\setbeamertemplate{navigation symbols}{}
+}
+\usepackage{graphicx} 
+\usepackage{booktabs} 
+\usepackage[utf8]{inputenc}  
+\usepackage[T1]{fontenc}  
+\usepackage{geometry}     
+\usepackage[francais]{babel} 
+\usepackage{eurosym}
+\usepackage{verbatim}
+\usepackage{ragged2e}
+\justifying
+\input{cc_beamer}
+\title[Tor et le Tor Browser Bundle]{Le réseau Tor} 
+\author{Genma}
+\date{SCE2015 - 13 juin 2015}
+\begin{document}
+\begin{frame}
+	\titlepage
+	\begin{center}
+		\includegraphics[scale=0.2]{./images/logo_tor.jpg}
+		\\		
+		\CcGroupByNcSa{0.83}{0.95ex}\\[2.5ex]
+		{\tiny\CcNote{\CcLongnameByNcSa}}
+		\vspace*{-2.5ex}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{\includegraphics[scale=0.4]{./images/Genma.jpg} \ \ \  A propos de moi  }
+\begin{columns}[c] 
+
+\column{.55\textwidth} 
+\textbf{Où me trouver sur Internet?}
+\begin{itemize}
+\item Le Blog de Genma : http://genma.free.fr
+\item Twitter : @genmae
+\end{itemize}
+\textbf{Mes projets-contributions}
+\\ Plein de choses dont:
+\begin{itemize}
+\item Promotion de Tor
+\item A.I.\up{2} Apprenons l'Informatique, Apprenons Internet
+\end{itemize}
+
+\column{.5\textwidth} 
+\includegraphics[width=5cm,height=5cm]{./images/blog.png} 
+\end{columns}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Remerciements}
+Je remercie l'association NosOignons.net, qui propose des nœuds de sortie Tor financés par la communauté.
+\url{https://nos-oignons.net}
+\\~\\
+\includegraphics[scale=0.4]{./images/NosOignons.jpg}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Introduction}
+\\~\\ \includegraphics[scale=0.4]{./images/logo_tor.jpg}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Présentation du réseau TOR}
+Tor est un logiciel libre,
+\begin{itemize}
+\item grâce auquel existe le réseau d'anonymisation Tor
+\item  soutenu par l'organisation The Tor Project.
+\end{itemize}
+$\Rightarrow$ Techniquement, Tor nous permet de nous connecter à des machines sur Internet via des relais. 
+\\$\Rightarrow$ Et cela de façon à ce qu'elles ne puissent pas identifier la provenance de notre connexion (et donc nous localiser).
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{A quoi sert TOR?}
+\\~\\ \includegraphics[scale=0.4]{./images/logo_tor.jpg}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{A quoi sert TOR?}
+Concrêtement, utiliser Tor peut permettre :
+\begin{itemize}
+\justifying{
+\item  d'échapper au fichage publicitaire,
+\item  de publier des informations sous un pseudonyme,
+\item  d'accéder à des informations en laissant moins de traces,
+\item  de déjouer des dispositifs de filtrage (sur le réseau de son entreprise, de sa Université, en Chine ou en France…),
+\item  de communiquer en déjouant des dispositifs de surveillances,
+\item  de tester son pare-feu,
+\item  … et sûrement encore d'autres choses.
+}
+\end{itemize}
+\justifying{
+$\Rightarrow$ Tor dispose également d'un système de « services cachés » qui permet de fournir un service en cachant l'emplacement du serveur.
+}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Comment fonctionne Tor ? }
+\\~\\ \includegraphics[scale=0.4]{./images/logo_tor.jpg}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Comment fonctionne Tor ?}
+\begin{center}
+\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{images/tor-safe-selection}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Comment fonctionne Tor ?}
+
+\begin{itemize}
+\justifying{
+\item Tor fait un routage en oignion avec des couches de chiffrement empilées.
+\item Le client sélectionne trois noeuds (à minima) parmi les différents "relais" Tor disponibles.
+\item Il sélectionne un noeud d'entrée, un noeud de sortie et un ou plusieurs noeuds intermédiaires (selon sa configuration).
+}
+\end{itemize}
+\justifying{
+$\Rightarrow$ Attention : Tor ne chiffre pas après le noeud de sortie.
+\\
+$\Rightarrow$ Il faut utiliser une connexion httpS (les clés étant négociées entre le client et le serveur web final).
+}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Comment fonctionne Tor ?}
+\begin{center}
+\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{images/tor-safe-path}
+\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Comment fonctionne Tor ?}
+
+\justifying{
+Rq : cette partie est peu documenté et assez complexe.
+\\~\\
+Après sélection des différents "noeuds-relais" dans le réseau, le client effectue un échange de clefs de sessions (Diffie-Hellman).  Il y a une première clé de chiffrement pour le nœud d'entrée, une second clé pour le nœud du milieu et une dernière pour le nœud de sortie.
+}
+\begin{itemize}
+\justifying{
+\item Chaque noeud envoit donc une clé de session. 
+\item Le premier noeud envoie sa clé au client.
+\item Le deuxième noeud envoie sa clé au 1er noeud qui la chiffre avec la clé négocié avec le client et l'envoie au client.
+\item Idem pour le troisième noeud (qui envoit de sa clé au 2nd noeud...)
+}
+\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Comment fonctionne Tor ?}
+\begin{center}
+\includegraphics[keepaspectratio,width=\textwidth, height=.8\textheight]{images/tor-keys1}
+\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Comment fonctionne Tor ?}
+
+\justifying{
+Une fois les clés de sessions échangées,
+}
+\begin{itemize}
+\justifying{
+\item Le client chiffre le paquet avec les 3 clés de session, l'envoie au 1er noeud qui pèle la première couche, 
+\item qui l'envoie au deuxième noeud qui pèle la deuxième couche de chiffrement,
+\item et ainsi de suite jusqu'au noeud de sortie.
+}
+\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Comment fonctionne Tor ?}
+
+\justifying{
+Une fois le paquet arrivé au noeud de sortie
+}
+\begin{itemize}
+\justifying{
+\item La résolution DNS est faite par le noeud de sortie.
+\item La requête est envoyé au serveur web par le noeud de sortie (qui expose donc son adresse IP).
+\item Le noeud de sortie reçoit la réponse.
+}
+\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Comment fonctionne Tor ?}
+
+\justifying{
+Une fois la réponse reçue,  les différents noeuds savent quel paquet doit suivre quel circruit car ils enregistrent la correspondance IP/Port source (\emph{une sorte de NAT}).
+}
+\begin{itemize}
+\justifying{
+\item Pour le chemin inverse, le dernier noeud chiffre avec sa clé de session ; 
+\item le passe au noeud d'avant qui chiffre aussi avec sa clé de session 
+\item jusqu'à remonter au client qui déchiffre les couches avec les clés qu'il a reçu lors de la construction du circuit.
+}
+\end{itemize}
+
+\justifying{
+Ainsi au niveau des échanges client noeud d'entrée, le paquet est chiffré par n fois (n étant le nombre de noeud).
+}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Tor hidden service \\ les services cachés de TOR}
+\\~\\ \includegraphics[scale=0.4]{./images/logo_tor.jpg}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Tor hidden service - les services cachés de TOR 1/3}
+\justifying{
+Tor permet aux clients et aux relais d’offrir des services cachés.Il est possible de proposer l'accès à un serveur web, un serveur SSH, etc, sans révéler son adresse IP aux utilisateurs.
+}
+\begin{itemize}
+\justifying{
+\item Tous ces sites ne sont accessibles que via le réseau Tor.
+\item Ils portent une adresse qui se termine par .onion.
+\item Des wikis et moteurs de recherches référencient ces services.
+}
+\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Tor hidden service - les services cachés de TOR 2/3}
+
+\begin{block}{Exemple de sites existants ayant une adresse .oinion}
+\begin{itemize}
+ \justifying{
+\item Duckduckgo \url{http://3g2upl4pq6kufc4m.onion}
+\item Facebook : \url{https://facebookcorewwwi.onion}
+\item Le blog de Stéphane Borztmeyer \\ \url{http://7j3ncmar4jm2r3e7.onion}
+\item Techn0polis  d'Amaelle Guiton \\ \url{http://ozawuyxtechnopol.onion}
+}
+\end{itemize}
+\end{block}
+ \justifying{
+$\Rightarrow$ Il existe des annuaires /wiki listant les sites en .oinion
+}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Tor hidden service - les services cachés de TOR 3/3}
+
+\begin{block}{Tutoriaux pour mettre en place un .oinion}
+\begin{itemize}
+ \justifying{
+\item Configuring Hidden Services for Tor
+\\ \url{https://www.torproject.org/docs/tor-hidden-service.html.en}
+\item Tor, les .onion, le "darknet" à votre portée par Benjamin Sonntag
+\\ \url{https://benjamin.sonntag.fr/Tor-les-onion-le-darknet-a-votre-portee}
+\item Mon blog dans les oignons par Stéphane Bortzmeyer
+\\ \url{http://www.bortzmeyer.org/blog-tor-onion.html}
+}
+\end{itemize}
+\end{block}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Comment utiliser Tor ? }
+\\~\\ \includegraphics[scale=0.4]{./images/logo_tor.jpg}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Utiliser Tor - Le Tor Browser}
+\justifying{
+Le Tor Browser est une version Extended Support de Firefox, auxquelles sont ajoutée les extensions préconfigurées permettant qu’au lancement du navigateur, celui-ci se connecte à Tor. 
+\\$\Rightarrow$ Ainsi, toute la navigation qui se fait via ce navigateur est faite au travers du réseau Tor. 
+\\$\Rightarrow$ Toutes les versions (dans différentes langues, différents OS) sont disponibles sur le site du projet : 
+\\ \url{https://www.torproject.org/}
+}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Télécharger le Tor Browser}
+\begin{center}
+\includegraphics[scale=0.5]{./images/tor2.jpg}
+\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Vérifier le Tor Browser téléchargé}
+Via les clefs GPG, cf. le tuto sur le site de Tor. \\ \url{https://www.torproject.org/docs/verifying-signatures.html}
+\begin{center}
+\includegraphics[scale=0.6]{./images/VerifyingSignatures.jpg}
+\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Installer le Tor Browser}
+
+\justifying{
+Le Tor Browser s'installe comme n'importe quel logiciel Windows, OS X. (voir les tutoriaux si besoin).
+\\
+Rq : le Tor Browser déclenche une alerte avec la suite Symantec (faux positif). 
+\\
+Pour Ubuntu, GNU/Linux c'est un programme autonome/portable. On peut aussi l'installer en compilant les sources.
+}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Lancer le Tor Browser}
+\begin{center}
+\includegraphics[scale=0.3]{./images/tor_browser03.jpg}
+\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Comment être sûr qu'on est bien connecté à Tor?}
+
+\begin{center}
+\url{https://check.torproject.org/}
+\\~\\
+\includegraphics[scale=0.4]{./images/congrats.jpg}
+\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Les nouveautés de la version 4.5 1/2}
+
+\begin{center}
+\includegraphics[scale=0.6]{./images/onionmenu.jpg}
+\end{center}
+
+\begin{block}{Pour la vie privée}
+\begin{itemize}
+ \justifying{
+\item Visualisation du circuit emprunté (désactivable) ;
+\item Changement de circuit par onglets  ;
+\item Cloisonnement des applications tierces à l'onglet ;
+\item Moteur de recherche par défaut : Disconnect (qui fournit des résultats de recherche Google).
+}
+\end{itemize}
+\end{block}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Les nouveautés de la version 4.5 2/2}
+\begin{center}
+\includegraphics[scale=0.6]{./images/securityslider}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Les nouveautés de la version 4.5 2/2}
+\begin{block}{Le curseur de sécurité}
+\begin{itemize}
+ \justifying{
+\item Haut - JavaScript est désactivé sur tous les sites par défaut, certains types d’images sont désactivées.
+\item Moyen-Haut - Tous les optimisations de performances JavaScript sont désactivés, certains police fonctionnalités de rendu sont désactivées, JavaScript est désactivé sur tous les non-sites HTTPS par défaut.
+\item  Moyen-Bas - HTML5 audio et vidéo sont en mode click-to-play, quelques optimisations de performances JavaScript sont désactivés, les fichiers JAR à distance sont bloqués et quelques méthodes pour afficher des équations mathématiques sont désactivées.
+\item  Faible (par défaut) - Toutes les fonctions du navigateur sont activés.
+}
+\end{itemize}
+La compatibilité diminue et la sécurité augmente avec chaque niveau de sécurité.
+\end{block}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Maintenir le Tor Browser \\ à jour ? }
+\\~\\ \includegraphics[scale=0.4]{./images/logo_tor.jpg}
+\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Vérifier et installer les mises à jour}
+\begin{center}
+\includegraphics[scale=0.6]{./images/onionmenu.jpg}
+\end{center}
+
+\begin{block}{Depuis un TorBrowser}
+\begin{itemize}
+ \justifying{
+\item Cliquer sur "Vérifier les mises à jour"
+}
+\end{itemize}
+La mise à jour se fait via Tor.
+\end{block}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Tor Browser Launcher}
+Pour avoir un Tor Browser toujours à jour, on peut installer le Tor Browser Launcher.
+\begin{center}
+\url{https://github.com/micahflee/torbrowser-launcher}
+\\ \includegraphics[scale=0.3]{./images/tor_browser01.jpg}
+\\ \includegraphics[scale=0.3]{./images/tor_browser02.jpg}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Tor Browser Launcher}
+Il gère : 
+\begin{itemize}
+\justifying{
+\item le téléchargement de la version la plus récente de TBB, dans votre langue et pour votre architecture ;
+\item la mise à jour automatique (tout en conservant vos signets et préférences) manuel ;
+\item la vérification de la signature GnuPG du TBB (pour être sûr de l’intégrité des fichiers) ;
+\item ajoute un lanceur d’application "Tor Browser" dans le menu de votre environnement de bureau.
+}
+\end{itemize}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\includegraphics[scale=0.3]{./images/tails_logo.jpg}
+\\~\\
+\url{https://tails.boom.org}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Utiliser Tor - Tails}
+\justifying{
+Tails (The Amnesic Incognito Live System) est un système d'exploitation complet basé sur Linux et Debian, en live.
+}
+\begin{center}
+\includegraphics[scale=0.3]{./images/tails.jpg}
+\\~\\
+\url{https://tails.boom.org}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Vous voulez que Tor \\ marche vraiment ?}
+\\~\\ \includegraphics[scale=0.4]{./images/logo_tor.jpg}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Vous voulez que Tor marche vraiment ?}
+\justifying{
+Vous devrez changer quelques-unes de vos habitudes, et certaines choses ne marcheront pas exactement comme vous le voudrez.
+}
+\begin{itemize}
+\justifying{
+\item Ne faîte pas de Torrent via Tor.
+\item N'activez pas et n'installez pas de plugins dans le navigateur.
+\item Utiliser la version HTTPS des sites webs.
+\item Comme avec un navigateur "normal", ne consultez pas/n'ouvrez pas de documents téléchargé pendant que vous êtes connecté si ceux-ci présentent "un risque". 
+\item Un noeud de sorte malveillant peut corrompre un binaire...
+}
+\end{itemize}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Limites à l'usage de Tor}
+\\~\\ \includegraphics[scale=0.4]{./images/logo_tor.jpg}
+\end{center}
+\end{frame}
+%---------------------
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Limites à l'usage de Tor}
+\begin{itemize}
+\justifying{
+\item Pas de flash. Mais les vidéos HTML5 passe.
+\item Il faut activer le javascript (avec parcimonie).
+\item Beaucoup de noeuds de sorties sont bloqués (Cloudfare) etc.
+\item Nécessité de saisir des captchas pour ne pas être assimilé à un bot (et d'activer le javascript).
+\item On ne peut pas créer de compte (Gmail, Twitter...)
+\item On sait qu'on utilise TOR (ou pas, obfuscation).
+}
+\end{itemize}
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Soutenir le projet Tor}
+\\~\\ \includegraphics[scale=0.4]{./images/logo_tor.jpg}
+\end{center}
+\end{frame}
+%---------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Soutenir le projet Tor 1/4}
+
+\begin{block}{NosOignons}
+\justifying{
+Il existe l'association NosOignons.net, qui propose des nœuds de sortie Tor financés par la communauté.
+\url{https://nos-oignons.net}
+}
+\begin{itemize}
+\justifying{
+\item En parler
+\item Faire un don à NosOignons
+}
+\end{itemize}
+\begin{center}
+\includegraphics[scale=0.6]{./images/Dons_nos_oignons.jpg}
+\end{center}
+\end{block}
+ \end{frame}
+%---------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Soutenir le projet Tor 2/4}
+\begin{block}{Tor Project}
+\begin{itemize}
+\justifying{
+\item Devenir membre de la communauté Tor, Tails
+\item Contibuez au code...
+\item Faire des tutoriaux, de la traduction...
+}
+\end{itemize}
+\end{block}
+ \end{frame}
+
+%---------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Soutenir le projet Tor 3/4}
+\begin{center}
+\includegraphics[scale=0.25]{./images/jeu_tor.jpg}
+\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Soutenir le projet Tor 4/4}
+\justifying{
+Si vous utilisez Cloudflare pour protéger votre site, un script permet aux utilisateurs de Tor d'y accéder
+\\ \url{https://github.com/DonnchaC/cloudflare-tor-whitelister}
+\\en ajoutant les relais/noeud de sortie sur une white-liste, permettant aux utilisateur de Tor ne pas avoir à saisir de Captcha.
+}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Questions et discussion}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\end{document}
