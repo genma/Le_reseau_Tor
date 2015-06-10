@@ -14,6 +14,8 @@
 \setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!50!red!50!blue!100!green}
 \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!5!white!10!bg,fg=white}
 \setbeamertemplate{navigation symbols}{}
+%-- Ajout du nb de pages en bas de page %
+\addtobeamertemplate{footline}{\hfill\insertframenumber/\inserttotalframenumber\hspace{2em}\null}
 }
 \usepackage{graphicx} 
 \usepackage{booktabs} 
@@ -48,13 +50,13 @@
 \column{.55\textwidth} 
 \textbf{Où me trouver sur Internet?}
 \begin{itemize}
-\item Le Blog de Genma : http://genma.free.fr
-\item Twitter : @genmae
+\item Le Blog de Genma
+\item Twitter : @genma
 \end{itemize}
-\textbf{Mes projets-contributions}
+\textbf{Mes projets - contributions}
 \\ Plein de choses dont:
 \begin{itemize}
-\item Promotion de Tor
+\item Promotion de Tor, traduction...
 \item A.I.\up{2} Apprenons l'Informatique, Apprenons Internet
 \end{itemize}
 
@@ -65,14 +67,6 @@
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Remerciements}
-Je remercie l'association NosOignons.net, qui propose des nœuds de sortie Tor financés par la communauté.
-\url{https://nos-oignons.net}
-\\~\\
-\includegraphics[scale=0.4]{./images/NosOignons.jpg}
-\end{frame}
-%----------------------------------------------------------------------------------------
-\begin{frame}
 \begin{center}
 \Huge{Introduction}
 \\~\\ \includegraphics[scale=0.4]{./images/logo_tor.jpg}
@@ -80,14 +74,15 @@ Je remercie l'association NosOignons.net, qui propose des nœuds de sortie Tor f
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Présentation du réseau TOR}
-Tor est un logiciel libre,
+\frametitle{Présentation du réseau TOR }
+
+\justifying{
+Tor est l'acronyme de The Onion Router, littéralement « le routeur oignon », en référence au \emph{routage en oignon}.
 \begin{itemize}
-\item grâce auquel existe le réseau d'anonymisation Tor
-\item  soutenu par l'organisation The Tor Project.
+\item Le réseau Tor est composé de routeurs organisés en couches, appelés nœuds de l’oignon, qui transmettent de manière anonyme des flux TCP.
+\item Tor est un logiciel libre (logiciel client et serveur) soutenu par l'organisation The Tor Project.
 \end{itemize}
-$\Rightarrow$ Techniquement, Tor nous permet de nous connecter à des machines sur Internet via des relais. 
-\\$\Rightarrow$ Et cela de façon à ce qu'elles ne puissent pas identifier la provenance de notre connexion (et donc nous localiser).
+}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}
@@ -314,16 +309,18 @@ $\Rightarrow$ Il existe des annuaires /wiki listant les sites en .oinion
 \begin{frame}
 \frametitle{Utiliser Tor - Le Tor Browser}
 \justifying{
-Le Tor Browser est une version Extended Support de Firefox, auxquelles sont ajoutée les extensions préconfigurées permettant qu’au lancement du navigateur, celui-ci se connecte à Tor. 
+Le Tor Browser est basé sur la version Extended Support de Firefox, auxquelles sont ajoutée les extensions préconfigurées permettant qu’au lancement du navigateur, celui-ci se connecte à Tor. 
 \\$\Rightarrow$ Ainsi, toute la navigation qui se fait via ce navigateur est faite au travers du réseau Tor. 
-\\$\Rightarrow$ Toutes les versions (dans différentes langues, différents OS) sont disponibles sur le site du projet : 
-\\ \url{https://www.torproject.org/}
 }
 \end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Télécharger le Tor Browser}
+\justifying{
+Toutes les versions (dans différentes langues, différents OS) sont disponibles sur le site du projet : 
+\\ \url{https://www.torproject.org/}
+}
 \begin{center}
 \includegraphics[scale=0.5]{./images/tor2.jpg}
 \end{center}
@@ -500,7 +497,7 @@ Vous devrez changer quelques-unes de vos habitudes, et certaines choses ne march
 \item N'activez pas et n'installez pas de plugins dans le navigateur.
 \item Utiliser la version HTTPS des sites webs.
 \item Comme avec un navigateur "normal", ne consultez pas/n'ouvrez pas de documents téléchargé pendant que vous êtes connecté si ceux-ci présentent "un risque". 
-\item Un noeud de sorte malveillant peut corrompre un binaire...
+\item Un noeud de sortie malveillant peut corrompre un binaire...
 }
 \end{itemize}
 \end{frame}
@@ -516,16 +513,19 @@ Vous devrez changer quelques-unes de vos habitudes, et certaines choses ne march
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Limites à l'usage de Tor}
+
+\begin{block}{Utiliser Tor amène certaines contraintes pour l'utilisateur}
 \begin{itemize}
 \justifying{
-\item Pas de flash. Mais les vidéos HTML5 passe.
-\item Il faut activer le javascript (avec parcimonie).
+\item Il n'y a pas de plugin flash (mais les vidéos HTML5 passent).
+\item Il faut régulièrement activer le javascript (avec parcimonie).
 \item Beaucoup de noeuds de sorties sont bloqués (Cloudfare) etc.
-\item Nécessité de saisir des captchas pour ne pas être assimilé à un bot (et d'activer le javascript).
+\item Il y a nécessité de saisir des captchas pour ne pas être assimilé à un bot (et d'activer le javascript).
 \item On ne peut pas créer de compte (Gmail, Twitter...)
-\item On sait qu'on utilise TOR (ou pas, obfuscation).
+\item On sait qu'on utilise TOR (sauf si on utilise l'obfuscation).
 }
 \end{itemize}
+\end{block}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
@@ -541,15 +541,9 @@ Vous devrez changer quelques-unes de vos habitudes, et certaines choses ne march
 
 \begin{block}{NosOignons}
 \justifying{
-Il existe l'association NosOignons.net, qui propose des nœuds de sortie Tor financés par la communauté.
+L'association NosOignons.net propose des nœuds de sortie Tor financés par la communauté.
 \url{https://nos-oignons.net}
 }
-\begin{itemize}
-\justifying{
-\item En parler
-\item Faire un don à NosOignons
-}
-\end{itemize}
 \begin{center}
 \includegraphics[scale=0.6]{./images/Dons_nos_oignons.jpg}
 \end{center}
@@ -566,18 +560,30 @@ Il existe l'association NosOignons.net, qui propose des nœuds de sortie Tor fin
 \item Faire des tutoriaux, de la traduction...
 }
 \end{itemize}
+$\Rightarrow$  \url{https://www.torproject.org/}
 \end{block}
  \end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Soutenir le projet Tor 3/3}
+
+\begin{block}{Enlever les noeuds de sortie Tor des listes noires}
 \justifying{
-Si vous utilisez Cloudflare pour protéger votre site, un script permet aux utilisateurs de Tor d'y accéder
+Si vous utilisez Cloudflare pour protéger votre site, un script ajoute les relais/noeud de sortie sur une white-liste : 
 \\ \url{https://github.com/DonnchaC/cloudflare-tor-whitelister}
-\\en ajoutant les relais/noeud de sortie sur une white-liste, permettant aux utilisateur de Tor ne pas avoir à saisir de Captcha.
+\\~\\$\Rightarrow$ Cela permet aux utilisateur de Tor ne pas avoir à saisir de \emph{captcha}.
 }
+\end{block}
 \end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Questions et discussion}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
@@ -599,14 +605,6 @@ Torify est une commande qui, placée devant le nom d’une commande/d’un progr
 \justifying{
 TorBirdy est une extension pour le courielleur Thunderbird qui permet de faire la réception et l'envoi de mail en passant par Tor (on n'expose alors pas sa propre IP aux serveurs IMAP/SMTP).
 }
-\end{frame}
-%----------------------------------------------------------------------------------------
-
-%----------------------------------------------------------------------------------------
-\begin{frame}
-\begin{center}
-\Huge{Questions et discussion}
-\end{center}
 \end{frame}
 %----------------------------------------------------------------------------------------
 \end{document}
