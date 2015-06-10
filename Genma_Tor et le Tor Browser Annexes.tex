@@ -1,0 +1,82 @@
+\documentclass{beamer}
+\mode<presentation> {
+\usepackage{color}
+\definecolor{bottomcolour}{rgb}{0.21,0.11,0.21}
+\definecolor{middlecolour}{rgb}{0.21,0.11,0.21}
+\setbeamercolor{structure}{fg=white}
+\setbeamertemplate{frametitle}[default]%[center]
+\setbeamercolor{normal text}{bg=black, fg=white}
+\setbeamertemplate{background canvas}[vertical shading]
+[bottom=bottomcolour, middle=middlecolour, top=black]
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{navigation symbols}{} %no nav symbols
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!50!red!50!blue!100!green}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!5!white!10!bg,fg=white}
+\setbeamertemplate{navigation symbols}{}
+%-- Ajout du nb de pages en bas de page %
+\addtobeamertemplate{footline}{\hfill\insertframenumber/\inserttotalframenumber\hspace{2em}\null}
+}
+\usepackage{graphicx} 
+\usepackage{booktabs} 
+\usepackage[utf8]{inputenc}  
+\usepackage[T1]{fontenc}  
+\usepackage{geometry}     
+\usepackage[francais]{babel} 
+\usepackage{eurosym}
+\usepackage{verbatim}
+\usepackage{ragged2e}
+\justifying
+\input{cc_beamer}
+\title[Tor et le Tor Browser Bundle]{Le réseau Tor - Annexes} 
+\author{Genma}
+\date{SCE2015 - 13 juin 2015}
+\begin{document}
+\begin{frame}
+	\titlepage
+	\begin{center}
+		\includegraphics[scale=0.2]{./images/logo_tor.jpg}
+		\\		
+		\CcGroupByNcSa{0.83}{0.95ex}\\[2.5ex]
+		{\tiny\CcNote{\CcLongnameByNcSa}}
+		\vspace*{-2.5ex}
+	\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\begin{center}
+\Huge{Annexes}
+\end{center}
+\end{frame}
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Vérification des signatures}
+\justifying{
+
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{La commande Torify}
+\justifying{
+Torify est une commande qui, placée devant le nom d’une commande/d’un programme qui utilise le réseau, permet que ce dernier/cette dernière fasse passer son trafic par TOR. Ainsi, n’importe quelle application pourra passer par TOR au lieu de se connecter directement à Internet, et ce, à la demande de l’utilisateur.
+}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{TorBirdy}
+\justifying{
+TorBirdy est une extension pour le courielleur Thunderbird qui permet de faire la réception et l'envoi de mail en passant par Tor (on n'expose alors pas sa propre IP aux serveurs IMAP/SMTP).
+}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{L'obfuscation}
+\justifying{
+
+}
+\end{frame}
+%----------------------------------------------------------------------------------------
+\end{document}
