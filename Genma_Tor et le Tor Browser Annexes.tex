@@ -51,12 +51,52 @@
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Vérification des signatures}
+\frametitle{Annexes}
+\begin{itemize}
 \justifying{
-
+\item Polémiques
+\item Vérification des signatures
+\item La commande Torify
+\item Torbirdy
+\item Les bridges et l'obfuscation
+\item Précisions sur le DNS
+\item Les échanges de clefs
+\item Le financement
+\item Série de liens
 }
+\end{itemize}
 \end{frame}
 
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Les polémiques}
+\justifying{
+\begin{block}{Utilisation pour des actes malveillants - Le "Darknet"}
+\url{http://www.theguardian.com/technology/2014/dec/31/dark-web-traffic-child-abuse-sites}
+\end{block}
+}
+
+\justifying{
+\begin{block}{Who use Tor? Tor user}
+\url{https://www.torproject.org/about/torusers.html.en}
+\end{block}
+}
+\end{frame}
+%----------------------------------------------------------------------------------------
+
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Vérification des signatures}
+\justifying{
+\begin{block}{Via la commande}
+gpg --verify torbrowser-install-4.5.1exe.asc  torbrowser-install-4.5.1exe
+\\~\\
+Cf. \url{https://www.torproject.org/docs/verifying-signatures.html.en}
+\end{block}
+}
+\end{frame}
+%----------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{La commande Torify}
 \justifying{
@@ -73,24 +113,94 @@ TorBirdy est une extension pour le courielleur Thunderbird qui permet de faire l
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{L'obfuscation}
-\justifying{
+\frametitle{TorBirdy}
+\begin{center}
+\includegraphics[scale=0.45]{./images/torbirdy01.jpg}
+\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{TorBirdy}
+\begin{center}
+\includegraphics[scale=0.45]{./images/torbirdy02.jpg}
+\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{TorBirdy}
+\begin{center}
+\includegraphics[scale=0.45]{./images/torbirdy03.jpg}
+\end{center}
+\end{frame}
+\begin{frame}
+\frametitle{TorBirdy}
+\begin{center}
+\includegraphics[scale=0.45]{./images/torbirdy04.jpg}
+\end{center}
+\end{frame}
 
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Les bridges et l'obfuscation}
+\justifying{
+Les Bridges sont des relais Tor qui ne sont pas listés dans l'annuaire principal de Tor. Un bridge obfsproxy permet d'obfusquer le trafic Tor, c'est à dire cacher les connexions au réseaux Tor.
 }
+
+\begin{center}
+\includegraphics[scale=0.45]{./images/tor_bridge.jpg}
+\end{center}
 \end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Série de liens}
+\frametitle{Précisions sur le DNS}
+\justifying{
+Tor ne peut assurer la protection de paquets UDP, et n’en soutient donc pas les utilisations, notamment les requêtes aux serveurs DNS. 
+\\~\\
+Cependant Tor offre la possibilité d'acheminer les requêtes DNS à travers son réseau, notamment à l’aide de la commande \emph{torsocks}.
+}
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Les échanges de clefs}
+\justifying{
+Les paquets à acheminer sont associés à une identification du propriétaire du circuit (la personne qui l’a construit). Mais cette identification est un code arbitraire qui a été choisi au moment de la construction du circuit. L’identification réelle du propriétaire est inaccessible.
+\\~\\
+Cette construction fait appel au concept de cryptographie hybride. Chaque nœud d’oignon possède une clef publique, mais la cryptographie à clef secrète (clef symétrique) est bien plus rapide que celle à clef publique. L’idée est donc de distribuer à chaque nœud du circuit une clef secrète chiffrée avec leur clef publique.
+\\~\\
+Après la phase de construction, chaque nœud du circuit dispose d'une clef secrète qui lui est propre et ne connaît que son prédécesseur et son successeur au sein du circuit.
+\\
+Source \url{https://fr.wikipedia.org/wiki/Tor_(réseau)}
+}
+
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Le financement}
+Le projet coûte 2 M\$ annuellement pour son développement et pour payer les nombreux serveurs. En 2012 :
+\begin{itemize}
+\justifying{
+\item 60\% proviennent du gouvernement américain (soutien à la liberté d'expression et à la recherche scientifique) ;
+\item 18\% proviennent de fondations et autres donateurs (John S. and James L. Knight Foundation (en), SRI International, Google, Swedish International Development Cooperation Agency;
+\item 18\% proviennent de la valorisation des contributions des bénévoles.
+}
+\end{itemize}
+Source \url{https://fr.wikipedia.org/wiki/Tor_(réseau)}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{S'informer - Série de liens}
 \begin{itemize}
 \justifying{
 \item \url{https://www.torproject.org}
+\item \url{https://blog.torproject.org}
 \item \url{https://tails.boum.org/}
 }
 \end{itemize}
 \end{frame}
-
-
 
 %----------------------------------------------------------------------------------------
 \end{document}
