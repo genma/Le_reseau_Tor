@@ -270,7 +270,7 @@ Ainsi au niveau des échanges client noeud d'entrée, le paquet est chiffré par
 \end{frame}
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Tor hidden service - les services cachés de TOR 1/3}
+\frametitle{Tor hidden service - les services cachés de TOR 1/4}
 \begin{block}{Caractéristiques des services cachés}
 \justifying{
 Tor permet aux clients et aux relais d’offrir des services cachés. Il est ainsi possible de proposer l'accès à un serveur web, un serveur SSH, etc, sans révéler son adresse IP aux utilisateurs.
@@ -285,7 +285,24 @@ Tor permet aux clients et aux relais d’offrir des services cachés. Il est ain
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Tor hidden service - les services cachés de TOR 2/3}
+\frametitle{Tor hidden service - les services cachés de TOR 2/4}
+On a un \emph{double routage en oignion}.
+\begin{itemize}
+\justifying{
+\item 3 relais depuis le client
+\item 3 relais depuis le serveur
+}
+\end{itemize}
+\justifying{
+$\Rightarrow$ Le client et le serveur se \emph{donne rendez-vous} sur un noeud Tor.
+$\Rightarrow$ Le client ne sait rien du serveur et inversement.
+}
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Tor hidden service - les services cachés de TOR 3/4}
 
 \begin{block}{Exemple de sites existants ayant une adresse .oinion}
 \justifying{
@@ -303,7 +320,7 @@ $\Rightarrow$ Il existe des annuaires - wiki listant les sites en .oinion.
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Tor hidden service - les services cachés de TOR 3/3}
+\frametitle{Tor hidden service - les services cachés de TOR 4/4}
 
 \begin{block}{Tutoriaux pour mettre en place un .oinion}
 \begin{itemize}
@@ -343,10 +360,12 @@ Le Tor Browser est basé sur la version Extended Support de Firefox, auxquelles 
 \justifying{
 Toutes les versions (dans différentes langues, différents OS) sont disponibles sur le site du projet : 
 \\ \url{https://www.torproject.org/}
+\\ Rq : Il existe la possibilité de le recevoir par mail...
 }
 \begin{center}
 \includegraphics[scale=0.5]{./images/tor2.jpg}
 \end{center}
+
 \end{frame}
 
 %----------------------------------------------------------------------------------------

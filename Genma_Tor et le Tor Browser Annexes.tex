@@ -55,6 +55,8 @@
 \begin{itemize}
 \justifying{
 \item Polémiques
+\item Quelques chiffres
+\item Les types de noeuds
 \item Vérification des signatures
 \item La commande Torify
 \item Torbirdy
@@ -72,6 +74,7 @@
 \frametitle{Les polémiques}
 \justifying{
 \begin{block}{Utilisation pour des actes malveillants - Le "Darknet"}
+Les sites Web des services cachés ne représentent que 2\% du trafic total dixit Roger Dingledine.\\
 \url{http://www.theguardian.com/technology/2014/dec/31/dark-web-traffic-child-abuse-sites}
 \end{block}
 }
@@ -82,8 +85,35 @@
 \end{block}
 }
 \end{frame}
-%----------------------------------------------------------------------------------------
 
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Quelques chiffres datant de nov 2013}
+\begin{itemize}
+\justifying{
+\item 4.600 relais présents dans le réseau  ;
+\item 900 noeuds de sortie ;
+\item 40 Gb/s de bande passante ;
+\item 25 Gb/s utilisés ;
+\item 500k utilisateurs (6\% de français).
+}
+\end{itemize}
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Les types de noeuds}
+\begin{itemize}
+\justifying{
+\item Guards : noeuds d'entrée publics ;
+\item Bridges : noeuds d'entrée publics ;
+\item Midlle : noeuds intermédiaires ;
+\item Exit : noeuds de sortie ;
+\item Obfsproxy : noeuds d'obfuscation.
+}
+\end{itemize}
+\end{frame}
 
 %----------------------------------------------------------------------------------------
 \begin{frame}
@@ -142,7 +172,8 @@ TorBirdy est une extension pour le courielleur Thunderbird qui permet de faire l
 \begin{frame}
 \frametitle{Les bridges et l'obfuscation}
 \justifying{
-Les Bridges sont des relais Tor qui ne sont pas listés dans l'annuaire principal de Tor. Un bridge obfsproxy permet d'obfusquer le trafic Tor, c'est à dire cacher les connexions au réseaux Tor.
+Les Bridges sont des relais Tor qui ne sont pas listés dans l'annuaire principal de Tor. 
+\\Un bridge obfsproxy permet d'obfusquer le trafic Tor, c'est à dire cacher les connexions au réseaux Tor (encapsulation dans du trafic neutre).
 }
 
 \begin{center}
