@@ -29,7 +29,6 @@
 \input{cc_beamer}
 \title[Tor et le Tor Browser Bundle]{Le réseau Tor} 
 \author{Genma}
-\date{SCE2015 - 13 juin 2015}
 \begin{document}
 \begin{frame}
 	\titlepage
@@ -96,7 +95,7 @@ $\Rightarrow$ Nous pourrons poursuivre la discussion sur le stand, dans la limit
 
 \begin{block}{C'est quoi Tor?}
 \justifying{
-Tor est l'acronyme de The Onion Router, littéralement « le routeur oignon », en référence au \emph{routage en oignon}.
+Tor est l'acronyme de Tor onion routing, littéralement « le routeur oignon Tor », en référence au \emph{routage en oignon}.
 \begin{itemize}
 \justifying{
 \item Le réseau Tor est composé de routeurs organisés en couches, appelés nœuds de l’oignon, qui transmettent de manière anonyme des flux TCP.
@@ -286,6 +285,8 @@ Tor permet aux clients et aux relais d’offrir des services cachés. Il est ain
 %----------------------------------------------------------------------------------------
 \begin{frame}
 \frametitle{Tor hidden service - les services cachés de TOR 2/4}
+
+\begin{block}{Fonctionnement}
 On a un \emph{double routage en oignion}.
 \begin{itemize}
 \justifying{
@@ -297,6 +298,7 @@ On a un \emph{double routage en oignion}.
 $\Rightarrow$ Le client et le serveur se \emph{donne rendez-vous} sur un noeud Tor.
 $\Rightarrow$ Le client ne sait rien du serveur et inversement.
 }
+\end{block}
 \end{frame}
 
 
@@ -332,6 +334,66 @@ $\Rightarrow$ Il existe des annuaires - wiki listant les sites en .oinion.
 \\ \url{http://www.bortzmeyer.org/blog-tor-onion.html}
 }
 \end{itemize}
+\end{block}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Tor hidden service -Tor2Web 1/4}
+
+\begin{block}{Tor2Web}
+ \justifying{
+Tor2web est un projet qui permet aux utilisateurs d'accéder aux Services Cachés / Hidden Services / adresses en .Onion sans utiliser le Tor Browser. 
+\\
+Ce projet a été initié par Aaron Swartz and Virgil Griffith. Site officiel \url{https://tor2web.org}
+}
+\end{block}
+\end{frame}
+
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Tor hidden service - Tor2Web 2/4}
+
+\begin{block}{Proxy vers les hidden services}
+ \justifying{
+Tor2Web agit comme un proxy spécialisé ou une sorte d'intermédiaire entre les services cachés et les utilisateurs en rendant visible et accessibles ces services aux personnes qui sont pas connectés à Tor.
+}
+\end{block}
+
+\begin{block}{Utilisation}
+ \justifying{
+ Dans l'url d'un service caché on remplace .onion avec .tor2web.org. 
+Le blog de Stéphane Borztmeyer \url{http://7j3ncmar4jm2r3e7.onion}
+\url{http://7j3ncmar4jm2r3e7.tor2web.org}
+}
+\end{block}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Tor hidden service - Tor2Web 3/4}
+
+\begin{block}{Attention}
+ \justifying{
+Tor2web préserve l'anonymat des éditeurs de contenu (vu qu'ils sont sur des services cachés de Tor), mais n'est pas lui-même un outil d'anonymat et ne propose pas de protection aux utilisateurs autre que HTTPS. 
+\\~\\
+Un avertissement concernant la vie privée et la sécurité est ajouté à l'en-tête de chaque page web, encourageant les lecteurs à utiliser le Tor Browser pour être anonyme lorsqu'ils consultent le contenu du Service caché.
+}
+\end{block}
+\begin{center}
+\includegraphics[scale=0.6]{./images/Tor2web_attention_Suite.jpg}
+\end{center}
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+\begin{frame}
+\frametitle{Tor hidden service - Tor2Web 4/4}
+
+\begin{block}{Communauté autour de Tor2Web}
+ \justifying{
+Comme Tor, Tor2web fonctionne à l'aide serveurs maintenus par une communauté ouverte d'individus et d'organisations. Il est donc possible de soutenir financièrement le projet, de contribuer au code ou d'installer son propre proxy permettant aux utilisateurs de consulter des services cachés.
+}
 \end{block}
 \end{frame}
 
